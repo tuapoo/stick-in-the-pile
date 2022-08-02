@@ -6,25 +6,28 @@ Created on Sat Jul 23 13:24:03 2022
 """
 
 import random
+from random import choice
 import time
 coin=random.randint(1,2)
 
 
-sitp=int(input("how many stick in the pile\n"))
+#sitp=int(input("how many stick in the pile\n"))
+sitp=choice([n for n in range(5,20) if (n%3)!=1])
 print("There are",sitp,"stick in the pile")
 name=input("What is your name :\n")
 print("My name is :",name)
-print("Let random to find who will go first . . .\n ")
+#print("Let random to find who will go first . . .\n ")
+print("bot will go first")
 time.sleep(1)
 stake=0
 Btakestick=0
 i=0
 n=0
-if coin == 1 :
-  print("its head,",name,"will go first")
-elif coin ==2 :
-  print("its tail, bot will go first")
-  
+#if coin == 1 :
+#  print("its head,",name,"will go first")
+#elif coin ==2 :
+  #print("its tail, bot will go first")
+coin=2  
 while sitp>0 :
     #print(sitp,"remain")
     if coin==1:
@@ -34,25 +37,19 @@ while sitp>0 :
       winner="bot, try again later"
       coin=2
     elif coin==2:
-      if sitp ==8:
-          Btakestick =1
-      elif sitp == 9:
-          Btakestick =2
-      elif sitp == 6:
-          Btakestick =2
-      elif sitp == 5:
+      print("sitp remian =" ,sitp)
+      time.sleep(1)
+      if (sitp%3)==2:
           Btakestick = 1
-      elif sitp == 3:
+      elif (sitp%3)== 0:
           Btakestick = 2
-      elif sitp == 2 :
-          Btakestick = 1
       elif sitp == 1:
           Btakestick = 1
       else :
           Btakestick=random.randint(1,2)
       sitp=sitp-Btakestick
       print("bot will take :",Btakestick)
-      winner=name,", try again later"
+      winner=name," try again later"
       coin =1
       time.sleep(1)
     if (Btakestick>=3 or stake>=3):
